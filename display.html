@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Questions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>Gayatri Vidya Parishad College Of Engineering(Autonomous)</h1>
+        <h3>(Approved by AICTE, Affiliated to JNTU-K, Kakinada)</h3>
+        <h2>Madhurawada, Visakhapatnam-530 048</h2> -->
+        <h1>Question Paper</h1>
+        <hr></hr>
+        <div id="question-paper">
+            <div id="generated-questions"></div> <!--Generated questions will be displayed-->
+        </div>
+        <button class= "sub-gen" onclick="printPaper()">Download</button>
+    </div>
+    <script>
+        // Function to parse query parameters from URL
+        function parseQueryString() {
+            const queryString = window.location.search.substring(1);
+            const params = {};
+            queryString.split('&').forEach(param => {
+                const parts = param.split('=');
+                const key = decodeURIComponent(parts[0]); //"q1", "q2", "q3"
+                const value = decodeURIComponent(parts[1]); //questions here
+                params[key] = value;
+            });
+            return params;
+        }
+
+        // Display generated questions on page load
+        window.onload = function() {
+            const params = parseQueryString();
+            const generatedQuestions = document.getElementById('generated-questions');
+            for (const key in params) {
+                if (params.hasOwnProperty(key) && key.startsWith('q')) {
+                    const questionElement = document.createElement('p');
+                    questionElement.textContent = params[key];
+                    generatedQuestions.appendChild(questionElement);
+                }
+            }
+        };
+
+        // Function to download the question paper as a PDF
+        function printPaper(){
+            window.print();
+        }
+    </script>
+</body>
+</html>

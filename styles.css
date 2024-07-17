@@ -1,0 +1,95 @@
+/* styles.css */
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* Container styling */
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Form heading styling */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styling the form container */
+#question-form {
+    width: 100%;
+}
+
+/* Styling the label */
+#question-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Styling the input for number of questions */
+#question-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Styling the questions container */
+#questions-container {
+    margin-bottom: 20px;
+}
+
+/* Styling individual question input div */
+.question-input {
+    margin-bottom: 15px;
+}
+
+/* Styling the label for each question */
+.question-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Styling the input for each question */
+.question-input input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Styling the submit button */
+.sub-gen {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Change background color on hover for the submit button */
+.sub-gen:hover {
+    background-color: #218838;
+}
