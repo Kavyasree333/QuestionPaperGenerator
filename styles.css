@@ -42,7 +42,7 @@ h1 {
 
 /* Styling the input for number of questions */
 #question-form input[type="number"] {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
@@ -57,9 +57,13 @@ h1 {
 
 /* Styling individual question input div */
 .question-input {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
+/* Styling the question-item divs */
+.question-input, .marks-item {
+    margin-bottom: 10px; /* Small gap between question and marks input */
+}
 /* Styling the label for each question */
 .question-input label {
     display: block;
@@ -68,14 +72,13 @@ h1 {
 }
 
 /* Styling the input for each question */
-.question-input input[type="text"] {
+.question-item input[type="text"]{
     width: calc(100% - 20px);
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
 }
-
 /* Styling the submit button */
 .sub-gen {
     background-color: #28a745;

@@ -21,8 +21,14 @@ function addQuestion(questionNumber) {
     questionInput.className = 'question-input'; //creates class for div element
     // Add the question input HTML to the new div element
     questionInput.innerHTML = `
-        <label for="question-${questionNumber}">Question ${questionNumber}:</label>
-        <input type="text" id="question-${questionNumber}" name="question-${questionNumber}">
+        <div class="question-item">
+            <label for="question-${questionNumber}">Question ${questionNumber}:</label>
+            <input type="text" id="question-${questionNumber}" name="question-${questionNumber}">
+        </div>
+        <div class="marks-input">
+            <label for="marks-${questionNumber}">Marks:</label>
+            <input type="number" id="marks-${questionNumber}" name="marks-${questionNumber}" min="1">
+        </div>
     `;
     questionsContainer.appendChild(questionInput);// Append the new div element to the questions-container
 }
@@ -45,8 +51,9 @@ function generateQuestionPaper() {
     // Check if all the questions are filled
     for (let i = 1; i <= questionCount; i++) {
         const questionText = document.getElementById(`question-${i}`).value; //retrieves the value of the input field
-        if (questionText) {
-            questions.push(`${i}. ${questionText}`); //pushes the question to the questions array
+        const marks = document.getElementById(`marks-${i}`).value;
+        if (questionText && marks) {
+            questions.push(`${i}. ${questionText} (Marks:${marks})`); //pushes the question to the questions array
         }
         else{
             filled = false;
