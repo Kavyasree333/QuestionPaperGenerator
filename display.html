@@ -12,11 +12,14 @@
         <h3>(Approved by AICTE, Affiliated to JNTU-K, Kakinada)</h3>
         <h2>Madhurawada, Visakhapatnam-530 048</h2> -->
         <h1>Question Paper</h1>
-        <hr></hr>
+        <hr>
         <div id="question-paper">
             <div id="generated-questions"></div> <!--Generated questions will be displayed-->
+            <div id="total-marks">
+                <strong>Total Marks: </strong><span id="marks-total">0</span>
+            </div>
         </div>
-        <button class= "sub-gen" onclick="printPaper()">Download</button>
+        <button class="sub-gen" onclick="printPaper()">Download</button>
     </div>
     <script>
         // Function to parse query parameters from URL
@@ -25,8 +28,8 @@
             const params = {};
             queryString.split('&').forEach(param => {
                 const parts = param.split('=');
-                const key = decodeURIComponent(parts[0]); //"q1", "q2", "q3"
-                const value = decodeURIComponent(parts[1]); //questions here
+                const key = decodeURIComponent(parts[0]); // "q1", "q2", "q3"
+                const value = decodeURIComponent(parts[1]); // questions here
                 params[key] = value;
             });
             return params;
@@ -36,19 +39,28 @@
         window.onload = function() {
             const params = parseQueryString();
             const generatedQuestions = document.getElementById('generated-questions');
+            let totalMarks = 0; // Initialize totalMarks
             for (const key in params) {
                 if (params.hasOwnProperty(key) && key.startsWith('q')) {
                     const questionElement = document.createElement('p');
-                    questionElement.textContent = params[key];
+                    const questionText = params[key];
+                    // Extract the marks from the question text
+                    const marksMatch = questionText.match(/\(Marks:\s*(\d+)\)$/);
+                    const marks = marksMatch ? parseInt(marksMatch[1], 10) : 0;
+                    totalMarks += marks;
+                    questionElement.textContent = questionText;
                     generatedQuestions.appendChild(questionElement);
                 }
             }
+            // Use template literal correctly
+            document.getElementById('marks-total').textContent = `${totalMarks}`;
         };
 
         // Function to download the question paper as a PDF
-        function printPaper(){
+        function printPaper() {
             window.print();
         }
     </script>
 </body>
 </html>
+
